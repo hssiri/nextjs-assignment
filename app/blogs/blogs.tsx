@@ -1,4 +1,5 @@
-import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from "react";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode, Key } from "react";
+
 
 function Blogs({ posts } :any ) {
     return (
@@ -6,9 +7,19 @@ function Blogs({ posts } :any ) {
         <div>
           <h5>List of blogs</h5>
           <ul>
-        {posts.map((post: { id: Key | null | undefined; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }) => (
+        {/* {posts ? posts.map((post) => (
           <li key={post.id}>{post.title}</li>
-        ))}
+        ))} */}
+        
+        {posts ? (
+        posts.map((post: { id: Key | null | undefined; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }) => (
+          <div key={post.id}>
+            <h2>Item: {post.title}</h2>
+          </div>
+        ))
+      ) : (
+        <h1>Loading...</h1>
+      )}
       </ul>
         </div>
       </main>
